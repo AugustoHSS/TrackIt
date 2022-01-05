@@ -4,7 +4,8 @@ export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-	font: inherit;
+    outline: 0;
+	  font: inherit;
     box-sizing: border-box;
     font-family: 'Lexend Deca', sans-serif;
   }

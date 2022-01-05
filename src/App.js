@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainPage from "./Componets/MainPage"
 import SingIn from "./Componets/SingIn"
