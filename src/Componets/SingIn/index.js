@@ -17,7 +17,6 @@ export default function SingIn() {
 
     function doSingIn(e) {
         e.preventDefault();
-        alert("teste")
         setIsLoading(true)
         const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", {
             email: email,
@@ -37,13 +36,9 @@ export default function SingIn() {
                 <Input isLoading={isLoading} onChange={(e) => setPassword(e.target.value)} value={password} type="password" disabled={isLoading} placeholder="senha" required />
                 <Input isLoading={isLoading} onChange={(e) => setName(e.target.value)} value={name} type="text" disabled={isLoading} placeholder="nome" required />
                 <Input isLoading={isLoading} onChange={(e) => setUrlImg(e.target.value)} value={urlImg} type="url" disabled={isLoading} placeholder="foto" required />
-                <Button isLoading={isLoading} disabled={isLoading} type="submit">{isLoading ? <Loader
-                    type="ThreeDots"
-                    color="#FFFFFF"
-                    height={45}
-                    width={70}
-                    timeout={9000} /> :
-                    "Cadastrar"}</Button>
+                <Button isLoading={isLoading} disabled={isLoading} type="submit">
+                    {isLoading ? <Loader type="ThreeDots" color="#FFFFFF" height={45} width={70} /> : "Cadastrar"}
+                </Button>
             </Form>
             <Link to={'/'}>Já tem uma conta? Faça login!</Link>
         </Container>

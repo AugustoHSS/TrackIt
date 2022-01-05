@@ -23,14 +23,15 @@ export const Input = styled.input`
     border-radius: 5px;
     margin-bottom: 6px;
     padding-left: 11px;
-
+    background-color: ${props => props.isLoading ? "#F2F2F2" : "#FFFFFF"};
     &::placeholder{
         font-size: 20px;
         color: #DBDBDB;
+
     }
 `
 export const Button = styled.button`
-    background: #52B6FF;
+    background-color: ${props => props.isLoading ? "#86CDFF" : "#52B6FF"};
     border-radius: 4.63636px;
     width: 303px;
     height: 45px;

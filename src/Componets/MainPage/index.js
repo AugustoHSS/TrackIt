@@ -1,17 +1,35 @@
 import logo from '../../assets/Logo.png';
-
-import { Link } from 'react-router-dom';
-
+import axios from 'axios';
+import Loader from "react-loader-spinner";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, Input, Button, Form } from './style';
 
-export default function MainPage() {
+export default function MainPage({ setToken }) {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    function doLogin(e) {
+        e.preventDefault();
+        setIsLoading(true)
+        const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
+            {
+                email: email,
+                password: password
+            })
+        promisse.then(answer => { navigate("/hoje"); setIsLoading(false); setToken(answer.data.token) })
+        promisse.catch(() => { setIsLoading(false); alert("Usuário ou senha inválidos.") })
+    }
     return (
         <Container>
             <img src={logo} alt="Logo" />
-            <Form>
-                <Input type="email" placeholder="email" />
-                <Input type="password" placeholder="senha" />
-                <Button>Entrar</Button>
+            <Form onSubmit={doLogin}>
+                <Input type="email" isLoading={isLoading} onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email" />
+                <Input type="password" isLoading={isLoading} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="senha" />
+                <Button isLoading={isLoading} disabled={isLoading} type="submit">
+                    {isLoading ? <Loader type="ThreeDots" color="#FFFFFF" height={45} width={70} /> : "Entrar"}
+                </Button>
             </Form>
             <Link to={'/cadastro'}>Não tem uma conta? Cadastre-se!</Link >
         </Container>
