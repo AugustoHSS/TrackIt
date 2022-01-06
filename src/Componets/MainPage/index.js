@@ -1,12 +1,14 @@
 import logo from '../../assets/Logo.png';
 import axios from 'axios';
 import Loader from "react-loader-spinner";
-import { useState } from 'react';
+import UserContext from "../../contexts/UserContext";
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Input, Button, Form } from './style';
 
-export default function MainPage({ setToken }) {
+export default function MainPage() {
     const navigate = useNavigate();
+    const { setLoginResponse } = useContext(UserContext);
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isLoading, setIsLoading] = useState(false)
@@ -18,7 +20,7 @@ export default function MainPage({ setToken }) {
                 email: email,
                 password: password
             })
-        promisse.then(answer => { navigate("/hoje"); setIsLoading(false); setToken(answer.data.token) })
+        promisse.then(answer => { navigate("/hoje"); setIsLoading(false); setLoginResponse(answer.data); })
         promisse.catch(() => { setIsLoading(false); alert("Usuário ou senha inválidos.") })
     }
     return (
