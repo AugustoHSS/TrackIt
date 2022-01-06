@@ -5,7 +5,4 @@ export const Container = styled.main`
     width:100vw;
     height: 100vh;
     padding: 70px 5% 70px 5%;
-    
-
-
 `
