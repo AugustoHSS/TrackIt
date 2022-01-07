@@ -27,8 +27,8 @@ export default function MainPage() {
         <Container>
             <img src={logo} alt="Logo" />
             <Form onSubmit={doLogin}>
-                <Input type="email" isLoading={isLoading} onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email" />
-                <Input type="password" isLoading={isLoading} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="senha" />
+                <Input disabled={isLoading} type="email" isLoading={isLoading} onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email" />
+                <Input disabled={isLoading} type="password" isLoading={isLoading} onChange={(e) => setPassword(e.target.value)} value={password} placeholder="senha" />
                 <Button isLoading={isLoading} disabled={isLoading} type="submit">
                     {isLoading ? <Loader type="ThreeDots" color="#FFFFFF" height={45} width={70} /> : "Entrar"}
                 </Button>

@@ -6,6 +6,7 @@ export const Container = styled.div`
     width:100vw;
     padding: 0 5% 0 5%;
     position:fixed;
+    z-index: 2;
     top:0;
     left: 0;
     background-color:#126BA5;
