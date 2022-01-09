@@ -12,8 +12,9 @@ import Historic from "./Componets/Historic"
 
 export default function App() {
     const [loginResponse, setLoginResponse] = useState({})
+    const [percentDoneToday, setPercentDoneToday] = useState(0)
     return (
-        <UserContext.Provider value={{ loginResponse, setLoginResponse }}>
+        <UserContext.Provider value={{ loginResponse, setLoginResponse, percentDoneToday, setPercentDoneToday }}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<MainPage />}></Route>

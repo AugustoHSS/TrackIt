@@ -32,7 +32,7 @@ export const CreateHabitButtonContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-        h2{
+        h1{
             font-size: 23px;
             color: #126BA5;
 

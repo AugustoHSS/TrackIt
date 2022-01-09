@@ -2,15 +2,18 @@ import "react-circular-progressbar/dist/styles.css";
 import { Container, ProgressBarContainer } from "./style"
 import { Link } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import UserContext from "../../contexts/UserContext";
+import { useContext } from 'react';
 export default function Footer() {
-    let percentage = 66
+    const { percentDoneToday } = useContext(UserContext);
+    const percent = percentDoneToday
     return (
         <Container>
             <Link to="/habitos">Hábitos</Link>
             <Link to="/hoje">
                 <ProgressBarContainer>
                     <CircularProgressbar
-                        value={percentage}
+                        value={percent}
                         text={`Hoje`}
                         background
                         backgroundPadding={6}
